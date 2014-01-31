@@ -4,6 +4,9 @@
 source "${TMUX_POWERLINE_DIR_LIB}/tmux_adapter.sh"
 
 other_symbol="⋯ "
+if [ -n "$TMUX_POWERLINE_SEG_VCS_OTHER_SYMBOL" ]; then
+    other_symbol=$TMUX_POWERLINE_SEG_VCS_OTHER_SYMBOL;
+fi
 
 run_segment() {
 	tmux_path=$(get_tmux_cwd)

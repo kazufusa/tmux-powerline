@@ -5,6 +5,9 @@
 source "${TMUX_POWERLINE_DIR_LIB}/tmux_adapter.sh"
 
 flat_symbol="⤚"
+if [ -n "$TMUX_POWERLINE_SEG_VCS_FLAT_SYMBOL" ]; then
+    flat_symbol=$TMUX_POWERLINE_SEG_VCS_FLAT_SYMBOL;
+fi
 
 run_segment() {
 	tmux_path=$(get_tmux_cwd)

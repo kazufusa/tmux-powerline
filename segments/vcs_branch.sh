@@ -4,6 +4,9 @@
 source "${TMUX_POWERLINE_DIR_LIB}/tmux_adapter.sh"
 
 branch_symbol="⭠"
+if [ -n "$TMUX_POWERLINE_SEG_VCS_BRANCH_SYMBOL" ]; then
+    branch_symbol=$TMUX_POWERLINE_SEG_VCS_BRANCH_SYMBOL;
+fi
 git_colour="5"
 svn_colour="220"
 hg_colour="45"
@@ -49,7 +52,7 @@ __parse_git_branch() {
 	fi
 
 	# Clean off unnecessary information.
-	branch=${branch##*/}
+    branch=${branch/refs\/heads\/}
 
 	echo  -n "#[fg=colour${git_colour}]${branch_symbol} #[fg=colour${TMUX_POWERLINE_CUR_SEGMENT_FG}]${branch}"
 }
