@@ -36,7 +36,7 @@ __parse_git_stats(){
 	[[ -z $(git rev-parse --git-dir 2> /dev/null) ]] && return
 
 	# return the number of staged items
-	staged=$(git ls-files --modified | wc -l)
+	staged=$(cd "$(git rev-parse --show-toplevel)";git ls-files --modified | wc -l)
 	echo $staged
 }
 __parse_hg_stats(){
